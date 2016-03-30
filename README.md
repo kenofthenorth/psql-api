@@ -93,11 +93,11 @@ Code of the North - Updates
 - You do not need to include a semi-colon at the end of your query when inputting it in the web GUI.
 - You **do** need to save, run, test and validate a query before you can execute it with an HTTP request.
 
-** Firefox REST client test **
+**Firefox REST client test**
 
 1. Create a custom header
       Name: Authorization
       Value: <insert token from jwt code above>
-2. URL: http://**<insert your ip address or hostname>**:3330/rapid/rpdquery?csql=**<insert name of saved query>**&limit=100&offset=0
+2. URL: http://<**insert your ip address or hostname**>:3330/rapid/rpdquery?csql=<**insert name of saved query**>&limit=100&offset=0
 3. USE HTTP GET for this test
 4. You should populate your table with some test data, so your query returns results. 
