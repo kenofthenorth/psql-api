@@ -87,7 +87,7 @@ License MIT
 
         var jwt = require('jsonwebtoken'),
         fs = require('fs');
-        var cert = fs.readFileSync('private.key');  // get private key from file in the same directory naned private.key,          containing just the password on line 1
+        var cert = fs.readFileSync('private.key');  // get private key from file in the same directory naned private.key, containing just the password on line 1
         var token = jwt.sign({ user: 'put your username here' }, cert, { algorithm: 'HS256'});
         console.log(token);
 
