@@ -76,7 +76,7 @@ This RESTful API server can be used to offer WEB services for various kind of ap
 
 License MIT
 
-Code of the North - Updates
+#Code of the North - Updates March 2016#
 
 ### Critical Information
 - Almost any error will be logged to the terminal session where you start the server, unless you handle it otherwise. The errors flip past the screen quickly(in our experience), so you will need to scroll back to see the messages. It is possible to save a query or a token that may cause the application to throw errors. Make a single change, then open a new tab in the application, or make a new web request, then check the log for errors if you don't see what you expect. **If the RAPID web admin interface isn't showing your saved values, there are probably errors. When in doubt, delete all values from your rcfg.sqls and rcfg.tokens tables manually in postgres.** Note: reusing query names is tricky, haven't quite figured out where the query name is stored, but it's not in the aforementioned tables. 
