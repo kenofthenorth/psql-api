@@ -75,3 +75,29 @@ This RESTful API server can be used to offer WEB services for various kind of ap
 
 
 License MIT
+
+Code of the North - Updates
+
+### Critical Information
+- Almost any error will be logged to the terminal session where you start the server, unless you handle it otherwise. The errors flip past the screen quickly(in our experience), so you will need to scroll back to see the messages. It is possible to save a query or a token that may cause the application to throw errors. Make a single change, then open a new tab in the application, or make a new web request, then check the log for errors if you don't see what you expect. **If the RAPID web admin interface isn't showing your saved values, there are probably errors. When in doubt, delete all values from your rcfg.sqls and rcfg.tokens tables manually in postgres.** Note: reusing query names is tricky, haven't quite figured out where the query name is stored, but it's not in the aforementioned tables. 
+- You must click on 'Settings' and set a Token Password
+- You must create a token. Click on the icon to the right of the tabs in interface to create a new tab; select Tokens. Using the package at https://github.com/auth0/node-jsonwebtoken.git and the following code(saved to file and executed with "node <filename>"), generate the the token:
+
+        var jwt = require('jsonwebtoken'),
+        fs = require('fs');
+        var cert = fs.readFileSync('private.key');  // get private key from file in the same directory naned private.key,          containing just the password on line 1
+        var token = jwt.sign({ user: 'put your username here' }, cert, { algorithm: 'HS256'});
+        console.log(token);
+
+- You must use a saved query, ad-hoc SQL is not permitted for security reasons.
+- You do not need to include a semi-colon at the end of your query when inputting it in the web GUI.
+- You **do** need to save, run, test and validate a query before you can execute it with an HTTP request.
+
+** Firefox REST client test **
+
+1. Create a custom header
+      Name: Authorization
+      Value: <insert token from jwt code above>
+2. URL: http://**<insert your ip address or hostname>**:3330/rapid/rpdquery?csql=**<insert name of saved query>**&limit=100&offset=0
+3. USE HTTP GET for this test
+4. You should populate your table with some test data, so your query returns results. 
